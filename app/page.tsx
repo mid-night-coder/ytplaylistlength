@@ -225,6 +225,10 @@ export default function Home() {
       <Header onFeedback={() => setFeedbackOpen(true)} />
       <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
       <ResponsiveLeaderboard className="pt-2" />
+      <div className="mx-auto max-w-4xl px-4">
+        <SkyscraperRow className="my-2" />
+      </div>
+      <PartnerOfferLink />
 
       <div className="min-h-screen" style={{ backgroundColor: "var(--bg)" }}>
         {/* ── Hero ── */}
@@ -252,7 +256,8 @@ export default function Home() {
               Calculate total watch time for any playlist or video at normal and faster playback speeds — instantly.
             </p>
 
-            <ResponsiveMediumBanner className="mb-6" />
+            <ResponsiveMediumBanner className="mb-4" />
+            <ResponsiveLeaderboard className="mb-6" />
 
             {/* ── Calculator card ── */}
             <div className="card p-5 sm:p-7 shadow-xl">
@@ -450,7 +455,10 @@ export default function Home() {
               </div>
             </div>
 
-            <PartnerOfferLink className="mt-6" />
+            <PartnerOfferLink className="mt-4" />
+            <ResponsiveMediumBanner className="my-4" />
+            <SkyscraperRow className="my-4" />
+            <ResponsiveLeaderboard className="my-4" />
 
             {/* ── History ── */}
             {history.length > 0 && !result && (
@@ -476,6 +484,8 @@ export default function Home() {
                     </button>
                   ))}
                 </div>
+                <NativeAdBanner className="my-4" />
+                <SkyscraperRow className="my-4" />
               </div>
             )}
 
@@ -503,6 +513,9 @@ export default function Home() {
                   </div>
                 </div>
 
+                <ResponsiveLeaderboard className="my-4" />
+                <SkyscraperRow className="my-4" />
+
                 {/* Summary stats */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
                   <StatCard icon={<Film className="w-3.5 h-3.5" />} label="Total Videos" value={result.totalVideos.toLocaleString()} sub="in playlist" />
@@ -511,6 +524,8 @@ export default function Home() {
                     <StatCard icon={<Clock className="w-3.5 h-3.5" />} label="Total Duration" value={formatDuration(result.totalSeconds)} sub="at 1× playback" />
                   </div>
                 </div>
+
+                <ResponsiveMediumBanner className="my-4" />
 
                 {/* Longest / Shortest */}
                 {result.longestVideo && result.shortestVideo && result.totalVideos > 1 && (
@@ -536,6 +551,9 @@ export default function Home() {
                   </div>
                 )}
 
+                <SkyscraperRow className="my-4" />
+                <ResponsiveLeaderboard className="my-4" />
+
                 {/* Speed cards */}
                 <div className="flex items-center gap-1.5 mb-2">
                   <Zap className="w-3.5 h-3.5 text-yellow-500" />
@@ -552,11 +570,16 @@ export default function Home() {
                 </div>
 
                 <ResponsiveMediumBanner className="my-6" />
+                <NativeAdBanner className="my-4" />
+                <PartnerOfferLink className="my-4" />
 
                 {/* Daily Watch Plan */}
                 <div className="mb-4">
                   <DailyWatchPlan totalSeconds={result.totalSeconds} />
                 </div>
+
+                <ResponsiveLeaderboard className="my-4" />
+                <SkyscraperRow className="my-4" />
 
                 {/* Video List */}
                 {result.videos && result.videos.length > 0 && (
@@ -564,6 +587,8 @@ export default function Home() {
                     <VideoList videos={result.videos} totalVideos={result.totalVideos} />
                   </div>
                 )}
+
+                <ResponsiveMediumBanner className="my-6" />
 
                 {/* Try another */}
                 <button
@@ -574,8 +599,11 @@ export default function Home() {
                   ← Calculate another playlist
                 </button>
 
-                <ResponsiveMediumBanner className="mt-8" />
-                <PartnerOfferLink />
+                <ResponsiveLeaderboard className="mt-8" />
+                <ResponsiveMediumBanner className="mt-4" />
+                <NativeAdBanner className="mt-4" />
+                <SkyscraperRow className="mt-4" />
+                <PartnerOfferLink className="mt-4" />
               </div>
             )}
           </div>
@@ -584,6 +612,7 @@ export default function Home() {
         {/* ── How it works ── */}
         <section className="py-12 border-t" style={{ borderColor: "var(--border)" }} aria-labelledby="how-it-works">
           <div className="mx-auto max-w-2xl px-4 sm:px-6">
+            <ResponsiveLeaderboard className="mb-6" />
             <h2 id="how-it-works" className="section-title">How it works</h2>
             <div className="grid sm:grid-cols-3 gap-4">
               {[
@@ -598,19 +627,25 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <SkyscraperRow className="mt-8" />
+            <ResponsiveMediumBanner className="mt-4" />
           </div>
         </section>
 
         {/* Native Recommendation Grid Ad */}
         <div className="mx-auto max-w-4xl px-4">
+          <ResponsiveLeaderboard className="my-4" />
           <NativeAdBanner />
+          <SkyscraperRow className="my-4" />
+          <PartnerOfferLink className="my-4" />
         </div>
 
         {/* ── FAQ ── */}
         <section className="py-12 border-t" style={{ borderColor: "var(--border)" }} aria-labelledby="faq-heading">
           <div className="mx-auto max-w-2xl px-4 sm:px-6">
+            <ResponsiveMediumBanner className="mb-6" />
             <h2 id="faq-heading" className="section-title">Frequently Asked Questions</h2>
-            <div className="space-y-2">
+            <div className="space-y-4">
               {[
                 { q: "Does this work for private playlists?", a: "No. The YouTube API only returns data for public and unlisted playlists. Private playlists will return an error." },
                 { q: "How are playlists with 500+ videos handled?", a: "We use full pagination with nextPageToken — playlists with thousands of videos are fully counted." },
@@ -620,22 +655,32 @@ export default function Home() {
                 { q: "Is my API key safe?", a: "Yes. All YouTube API calls run server-side. Your key is never sent to the browser." },
                 { q: "Why might the video count differ from YouTube's count?", a: "Deleted or private videos within a playlist are excluded from the calculation, which may differ from the count shown on YouTube." },
               ].map((item, i) => (
-                <details key={i} className="card group overflow-hidden" style={{ backgroundColor: "var(--bg-card)" }}>
-                  <summary className="flex items-center justify-between gap-4 px-5 py-4 text-sm font-medium cursor-pointer list-none"
-                    style={{ color: "var(--text)" }}>
-                    {item.q}
-                    <ChevronRight className="w-4 h-4 shrink-0 transition-transform duration-200 group-open:rotate-90" style={{ color: "var(--text-subtle)" }} />
-                  </summary>
-                  <p className="px-5 pb-4 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{item.a}</p>
-                </details>
+                <div key={i} className="space-y-4">
+                  <details className="card group overflow-hidden" style={{ backgroundColor: "var(--bg-card)" }}>
+                    <summary className="flex items-center justify-between gap-4 px-5 py-4 text-sm font-medium cursor-pointer list-none"
+                      style={{ color: "var(--text)" }}>
+                      {item.q}
+                      <ChevronRight className="w-4 h-4 shrink-0 transition-transform duration-200 group-open:rotate-90" style={{ color: "var(--text-subtle)" }} />
+                    </summary>
+                    <p className="px-5 pb-4 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{item.a}</p>
+                  </details>
+                  {i === 1 && <ResponsiveLeaderboard className="my-4" />}
+                  {i === 3 && <SkyscraperRow className="my-4" />}
+                  {i === 5 && <ResponsiveMediumBanner className="my-4" />}
+                </div>
               ))}
             </div>
+            <ResponsiveLeaderboard className="mt-8" />
           </div>
         </section>
 
         {/* Skyscraper & Partner Ads Row */}
         <div className="mx-auto max-w-4xl px-4 pb-12">
           <SkyscraperRow />
+          <ResponsiveMediumBanner className="my-4" />
+          <ResponsiveLeaderboard className="my-4" />
+          <NativeAdBanner className="my-6" />
+          <PartnerOfferLink className="my-4" />
         </div>
       </div>
 
