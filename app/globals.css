@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/* ── Theme CSS variables ─────────────────────────────────────────────────── */
+:root {
+  --bg: #fafafa;
+  --bg-card: #ffffff;
+  --bg-input: #f4f4f5;
+  --bg-hover: #f4f4f5;
+  --border: #e4e4e7;
+  --border-focus: #dc2626;
+  --text: #09090b;
+  --text-muted: #71717a;
+  --text-subtle: #a1a1aa;
+  --accent: #dc2626;
+  --accent-hover: #b91c1c;
+  --badge-bg: #fef2f2;
+  --badge-text: #991b1b;
+  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+.dark {
+  --bg: #09090b;
+  --bg-card: #18181b;
+  --bg-input: #09090b;
+  --bg-hover: #27272a;
+  --border: #27272a;
+  --border-focus: #ef4444;
+  --text: #fafafa;
+  --text-muted: #a1a1aa;
+  --text-subtle: #71717a;
+  --accent: #ef4444;
+  --accent-hover: #dc2626;
+  --badge-bg: rgb(239 68 68 / 0.1);
+  --badge-text: #fca5a5;
+  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4);
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  ::selection {
+    background-color: rgb(220 38 38 / 0.2);
+    color: var(--text);
+  }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-subtle); }
+}
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@layer utilities {
+  @keyframes fade-slide-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .animate-fade-slide { animation: fade-slide-in 0.4s ease both; }
+  .animate-fade       { animation: fade-in 0.3s ease both; }
+  .animate-spin       { animation: spin 1s linear infinite; }
+  .animate-pulse-dot  { animation: pulse-dot 2s ease-in-out infinite; }
+
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+
+  /* Theme-aware utility shorthands */
+  .card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    box-shadow: var(--card-shadow);
+  }
+  .input-base {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 0.75rem;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .input-base:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgb(220 38 38 / 0.12);
+  }
+  .input-base::placeholder {
+    color: var(--text-subtle);
+  }
+  .btn-primary {
+    background-color: var(--accent);
+    color: #fff;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: background-color 0.15s, transform 0.1s;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--accent-hover);
+  }
+  .btn-primary:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .label-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .section-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+}
