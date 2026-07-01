@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "YT Playlist Length" }],
   robots: { index: true, follow: true },
+  icons: { icon: "/icon.svg", shortcut: "/icon.svg", apple: "/icon.svg" },
   openGraph: {
     type: "website", locale: "en_US", url: BASE_URL,
     siteName: "YouTube Playlist Length Calculator",
