@@ -11,8 +11,8 @@ export default function ContactPage() {
         </p>
         <div className="card p-5" style={{ backgroundColor: "var(--bg-card)" }}>
           <p className="text-sm font-semibold mb-1" style={{ color: "var(--text)" }}>Email</p>
-          <a href="mailto:hello@ytplaylistlength.one" className="text-sm text-red-500 hover:underline">
-            hello@ytplaylistlength.one
+          <a href="mailto:" className="text-sm text-red-500 hover:underline">
+            
           </a>
           <p className="text-xs mt-3" style={{ color: "var(--text-subtle)" }}>
             We read every message and typically respond within 24–48 hours.
