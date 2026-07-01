@@ -86,7 +86,7 @@ const SHARE_PLATFORMS = [
   },
 ];
 
-export function ShareButtons({ url = "https://ytplaylistlength.one" }: { url?: string }) {
+export function ShareButtons({ url = "https://ytplaylistlengthcal.vercel.app" }: { url?: string }) {
   const [copied, setCopied] = useState(false);
   const encoded = encodeURIComponent(url);
 

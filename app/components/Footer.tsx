@@ -20,9 +20,9 @@ const FOOTER_LINKS = {
 };
 
 const SHARE_LINKS = [
-  { label: "X (Twitter)", href: "https://twitter.com/intent/tweet?url=https://ytplaylistlength.one&text=Calculate%20YouTube%20playlist%20length%20instantly!", icon: "𝕏" },
-  { label: "Facebook", href: "https://www.facebook.com/sharer/sharer.php?u=https://ytplaylistlength.one", icon: "f" },
-  { label: "Reddit", href: "https://reddit.com/submit?url=https://ytplaylistlength.one&title=YouTube%20Playlist%20Length%20Calculator", icon: "r" },
+  { label: "X (Twitter)", href: "https://twitter.com/intent/tweet?url=https://ytplaylistlengthcal.vercel.app&text=Calculate%20YouTube%20playlist%20length%20instantly!", icon: "𝕏" },
+  { label: "Facebook", href: "https://www.facebook.com/sharer/sharer.php?u=https://ytplaylistlengthcal.vercel.app", icon: "f" },
+  { label: "Reddit", href: "https://reddit.com/submit?url=https://ytplaylistlengthcal.vercel.app&title=YouTube%20Playlist%20Length%20Calculator", icon: "r" },
 ];
 
 export function Footer() {

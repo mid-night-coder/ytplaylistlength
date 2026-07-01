@@ -8,7 +8,7 @@ export default function PrivacyPage() {
     { title: "Third-Party Services", body: "We use the YouTube Data API v3 (Google) to fetch playlist metadata. Your use of this tool is also subject to Google's Privacy Policy. We do not use any advertising cookies or analytics tracking." },
     { title: "Children's Privacy", body: "This tool is not directed at children under the age of 13 and we do not knowingly collect data from children." },
     { title: "Changes to This Policy", body: "We may update this policy occasionally. Any changes will be posted on this page with an updated effective date." },
-    { title: "Contact", body: "If you have any questions about this Privacy Policy, please contact us at hello@ytplaylistlength.one." },
+    { title: "Contact", body: "If you have any questions about this Privacy Policy, please contact us at hello@ytplaylistlengthcal.vercel.app." },
   ];
   return (
     <div className="min-h-screen py-12" style={{ backgroundColor: "var(--bg)" }}>

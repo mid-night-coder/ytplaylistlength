@@ -115,7 +115,7 @@ function CopyResultsBtn({ result }: { result: ResultData }) {
       `1.5×:  ${formatDuration(result.totalSeconds / 1.5)}`,
       `1.75×: ${formatDuration(result.totalSeconds / 1.75)}`,
       `2×:    ${formatDuration(result.totalSeconds / 2)}`,
-      `— ytplaylistlength.one`,
+      `— ytplaylistlengthcal.vercel.app`,
     ].join("\n");
     await navigator.clipboard.writeText(text);
     setCopied(true);

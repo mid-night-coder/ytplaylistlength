@@ -5,7 +5,7 @@ import { ThemeProvider } from "./components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
-const BASE_URL = "https://ytplaylistlength.one";
+const BASE_URL = "https://ytplaylistlengthcal.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

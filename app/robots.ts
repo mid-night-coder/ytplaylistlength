@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/api/",
     },
-    sitemap: "https://ytplaylistlength.one/sitemap.xml",
+    sitemap: "https://ytplaylistlengthcal.vercel.app/sitemap.xml",
   };
 }
