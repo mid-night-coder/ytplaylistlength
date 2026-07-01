@@ -17,6 +17,7 @@ import {
   SkyscraperRow,
   PartnerOfferLink,
   AdCluster,
+  CoinzUpBanner,
 } from "./components/AdBanner";
 import { VideoList } from "./components/VideoList";
 import { DailyWatchPlan } from "./components/DailyWatchPlan";
@@ -226,7 +227,9 @@ export default function Home() {
       <Header onFeedback={() => setFeedbackOpen(true)} />
       <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
       <div className="mx-auto max-w-4xl px-4">
+        <CoinzUpBanner />
         <AdCluster count={3} />
+        <CoinzUpBanner />
       </div>
 
       <div className="min-h-screen" style={{ backgroundColor: "var(--bg)" }}>
@@ -454,7 +457,9 @@ export default function Home() {
               </div>
             </div>
 
+            <CoinzUpBanner />
             <AdCluster count={3} />
+            <CoinzUpBanner />
 
             {/* ── History ── */}
             {history.length > 0 && !result && (
@@ -480,7 +485,9 @@ export default function Home() {
                     </button>
                   ))}
                 </div>
+                <CoinzUpBanner />
                 <AdCluster count={2} />
+                <CoinzUpBanner />
               </div>
             )}
 
@@ -508,6 +515,7 @@ export default function Home() {
                   </div>
                 </div>
 
+                <CoinzUpBanner />
                 <AdCluster count={2} />
 
                 {/* Summary stats */}
@@ -519,6 +527,7 @@ export default function Home() {
                   </div>
                 </div>
 
+                <CoinzUpBanner />
                 <AdCluster count={2} />
 
                 {/* Longest / Shortest */}
@@ -598,6 +607,7 @@ export default function Home() {
         {/* ── How it works ── */}
         <section className="py-12 border-t" style={{ borderColor: "var(--border)" }} aria-labelledby="how-it-works">
           <div className="mx-auto max-w-2xl px-4 sm:px-6">
+            <CoinzUpBanner />
             <AdCluster count={2} />
             <h2 id="how-it-works" className="section-title">How it works</h2>
             <div className="grid sm:grid-cols-3 gap-4">
@@ -619,6 +629,7 @@ export default function Home() {
 
         {/* Native Recommendation Grid Ad */}
         <div className="mx-auto max-w-4xl px-4">
+          <CoinzUpBanner />
           <AdCluster count={2} />
           <NativeAdBanner />
           <AdCluster count={2} />
@@ -627,6 +638,7 @@ export default function Home() {
         {/* ── FAQ ── */}
         <section className="py-12 border-t" style={{ borderColor: "var(--border)" }} aria-labelledby="faq-heading">
           <div className="mx-auto max-w-2xl px-4 sm:px-6">
+            <CoinzUpBanner />
             <AdCluster count={2} />
             <h2 id="faq-heading" className="section-title">Frequently Asked Questions</h2>
             <div className="space-y-4">
@@ -658,6 +670,7 @@ export default function Home() {
 
         {/* Skyscraper & Partner Ads Row */}
         <div className="mx-auto max-w-4xl px-4 pb-12">
+          <CoinzUpBanner />
           <AdCluster count={4} />
           <NativeAdBanner className="my-6" />
         </div>

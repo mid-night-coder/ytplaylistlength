@@ -173,7 +173,31 @@ export function PartnerOfferLink({ className = "" }: { className?: string }) {
 }
 
 /**
- * High-Density Ad Cluster Block (Each count renders 7 ad units: Leaderboard, Medium, Skyscraper Row, and Partner Link)
+ * CoinzUp Banner Unit
+ */
+export function CoinzUpBanner({ className = "" }: { className?: string }) {
+  return (
+    <div className={`w-full flex justify-center my-4 overflow-hidden ${className}`}>
+      <a
+        href="https://coinzup.net/api/click/banner/2vd2WyMDYu"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block hover:opacity-95 transition-opacity max-w-full"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://coinzup.net/api/banner/2vd2WyMDYu/banner.gif"
+          alt="CoinzUp Banner"
+          className="max-w-full h-auto rounded-lg shadow-md mx-auto"
+          loading="lazy"
+        />
+      </a>
+    </div>
+  );
+}
+
+/**
+ * High-Density Ad Cluster Block (Each count renders 8 ad units: Leaderboard, Medium, Skyscraper Row, Partner Link, and CoinzUp Banner)
  * Used to achieve massive monetization density (>100 ads across the page).
  */
 export function AdCluster({ count = 2, className = "" }: { count?: number; className?: string }) {
@@ -182,11 +206,13 @@ export function AdCluster({ count = 2, className = "" }: { count?: number; class
       {Array.from({ length: count }).map((_, idx) => (
         <div key={idx} className="w-full flex flex-col items-center gap-3 border-y border-[var(--border)] py-4">
           <ResponsiveLeaderboard />
+          <CoinzUpBanner />
           <div className="w-full flex flex-wrap justify-center items-center gap-4">
             <ResponsiveMediumBanner />
             <SkyscraperRow />
           </div>
           <PartnerOfferLink />
+          <CoinzUpBanner />
         </div>
       ))}
     </div>
