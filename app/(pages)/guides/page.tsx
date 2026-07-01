@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
+import { ResponsiveLeaderboard, NativeAdBanner } from "@/app/components/AdBanner";
 
 export const metadata: Metadata = {
   title: "Guides — YouTube Tips & Tutorials",
@@ -49,6 +50,8 @@ export default function GuidesPage() {
           </p>
         </div>
 
+        <ResponsiveLeaderboard className="mb-8" />
+
         <div className="space-y-4">
           {GUIDES.map((g) => (
             <Link
@@ -76,6 +79,8 @@ export default function GuidesPage() {
             </Link>
           ))}
         </div>
+
+        <NativeAdBanner className="mt-12" />
       </div>
     </div>
   );

@@ -10,6 +10,13 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { FeedbackModal } from "./components/FeedbackModal";
 import { ShareButtons } from "./components/ShareButtons";
+import {
+  ResponsiveLeaderboard,
+  ResponsiveMediumBanner,
+  NativeAdBanner,
+  SkyscraperRow,
+  PartnerOfferLink,
+} from "./components/AdBanner";
 import { VideoList } from "./components/VideoList";
 import { DailyWatchPlan } from "./components/DailyWatchPlan";
 import {
@@ -217,6 +224,7 @@ export default function Home() {
     <>
       <Header onFeedback={() => setFeedbackOpen(true)} />
       <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
+      <ResponsiveLeaderboard className="pt-2" />
 
       <div className="min-h-screen" style={{ backgroundColor: "var(--bg)" }}>
         {/* ── Hero ── */}
@@ -559,6 +567,9 @@ export default function Home() {
                 >
                   ← Calculate another playlist
                 </button>
+
+                <ResponsiveMediumBanner className="mt-8" />
+                <PartnerOfferLink />
               </div>
             )}
           </div>
@@ -583,6 +594,11 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Native Recommendation Grid Ad */}
+        <div className="mx-auto max-w-4xl px-4">
+          <NativeAdBanner />
+        </div>
 
         {/* ── FAQ ── */}
         <section className="py-12 border-t" style={{ borderColor: "var(--border)" }} aria-labelledby="faq-heading">
@@ -610,6 +626,11 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Skyscraper & Partner Ads Row */}
+        <div className="mx-auto max-w-4xl px-4 pb-12">
+          <SkyscraperRow />
+        </div>
       </div>
 
       <Footer />
