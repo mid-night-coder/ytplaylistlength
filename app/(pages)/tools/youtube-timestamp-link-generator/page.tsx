@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Link2, Copy, Check, AlertCircle, CheckCircle2, ExternalLink } from "lucide-react";
+import { ResponsiveLeaderboard, ResponsiveMediumBanner, NativeAdBanner, PartnerOfferLink } from "@/app/components/AdBanner";
 
 function extractVideoId(url: string): string | null {
   const shortMatch = url.match(/youtu\.be\/([A-Za-z0-9_-]{11})/);
@@ -81,52 +82,79 @@ export default function TimestampGenerator() {
           </div>
 
           {/* Time inputs */}
-          <div className="mb-5">
-            <p className="label-text mb-2">Start Time</p>
-            <div className="grid grid-cols-3 gap-3">
-              {[
-                { label: "Hours", value: hours, setter: setHours, max: 23 },
-                { label: "Minutes", value: minutes, setter: setMinutes, max: 59 },
-                { label: "Seconds", value: seconds, setter: setSeconds, max: 59 },
-              ].map((field) => (
-                <div key={field.label}>
-                  <label className="text-xs mb-1 block" style={{ color: "var(--text-subtle)" }}>{field.label}</label>
-                  <input
-                    type="number" min={0} max={field.max} value={field.value}
-                    onChange={(e) => field.setter(Math.min(field.max, Math.max(0, Number(e.target.value))))}
-                    className="input-base w-full px-3 py-2 text-sm text-center font-mono"
-                    style={{ color: "var(--text)" }}
-                  />
-                </div>
-              ))}
-            </div>
-            <p className="mt-2 text-center text-sm font-bold" style={{ color: "var(--text)" }}>
-              → {fmtTime(hours, minutes, seconds)} ({totalSec}s)
-            </p>
+          <div className="grid grid-cols-3 gap-3 mb-5">
+            {[
+              { label: "Hours", val: hours, set: setHours, max: 99 },
+              { label: "Minutes", val: minutes, set: setMinutes, max: 59 },
+              { label: "Seconds", val: seconds, set: setSeconds, max: 59 },
+            ].map((field) => (
+              <div key={field.label}>
+                <label className="text-xs mb-1.5 block font-medium" style={{ color: "var(--text-muted)" }}>{field.label}</label>
+                <input
+                  type="number"
+                  min={0}
+                  max={field.max}
+                  value={field.val || ""}
+                  onChange={(e) => field.set(Math.max(0, Math.min(field.max, parseInt(e.target.value) || 0)))}
+                  placeholder="0"
+                  className="input-base w-full px-3 py-2.5 text-center text-base font-mono font-semibold"
+                  style={{ color: "var(--text)" }}
+                />
+              </div>
+            ))}
           </div>
 
-          {error && (
-            <div className="mb-4 flex items-center gap-2 text-sm" style={{ color: "#ef4444" }}>
-              <AlertCircle className="w-4 h-4 shrink-0" /> {error}
-            </div>
-          )}
+          {/* Preset buttons */}
+          <div className="flex flex-wrap gap-1.5 mb-5">
+            <span className="text-xs self-center mr-1" style={{ color: "var(--text-subtle)" }}>Quick add:</span>
+            {[
+              { label: "+30s", s: 30 },
+              { label: "+1m", s: 60 },
+              { label: "+5m", s: 300 },
+              { label: "+10m", s: 600 },
+              { label: "+1h", s: 3600 },
+            ].map((p) => (
+              <button
+                key={p.label}
+                type="button"
+                onClick={() => {
+                  const newTotal = totalSec + p.s;
+                  setHours(Math.floor(newTotal / 3600));
+                  setMinutes(Math.floor((newTotal % 3600) / 60));
+                  setSeconds(newTotal % 60);
+                }}
+                className="px-2.5 py-1 rounded-lg text-xs font-medium transition-colors hover:bg-[var(--bg-hover)]"
+                style={{ border: "1px solid var(--border)", color: "var(--text-muted)" }}
+              >
+                {p.label}
+              </button>
+            ))}
+            {totalSec > 0 && (
+              <button
+                type="button"
+                onClick={() => { setHours(0); setMinutes(0); setSeconds(0); }}
+                className="px-2.5 py-1 rounded-lg text-xs font-medium text-red-500 hover:bg-red-500/10 ml-auto transition-colors"
+              >
+                Reset
+              </button>
+            )}
+          </div>
 
-          <button
-            onClick={validate}
-            className="btn-primary w-full flex items-center justify-center gap-2 py-3 text-sm"
-          >
-            <Link2 className="w-4 h-4" /> Generate Timestamp Link
+          <button onClick={validate} className="btn-primary w-full py-3.5 text-sm flex items-center justify-center gap-2">
+            <Link2 className="w-4 h-4" /> Generate Timestamp Links
           </button>
         </div>
 
-        {/* Generated URLs */}
-        {generatedUrl && !error && (
+        {/* Results */}
+        {generatedUrl && (
           <div className="card p-6 animate-fade-slide" style={{ backgroundColor: "var(--bg-card)" }}>
-            <h2 className="text-sm font-semibold mb-4" style={{ color: "var(--text)" }}>Your timestamp links</h2>
+            <h2 className="text-sm font-semibold mb-3 flex items-center gap-1.5" style={{ color: "var(--text)" }}>
+              <CheckCircle2 className="w-4 h-4 text-green-500" /> Your Links are Ready
+            </h2>
 
             {[
-              { label: "Shareable link (youtu.be)", value: generatedUrl },
-              { label: "Embed URL (for iframe)", value: embedUrl! },
+              { label: "Shareable Link (starts at " + (hours ? `${hours}h ` : "") + (minutes ? `${minutes}m ` : "") + `${seconds}s)`, value: generatedUrl },
+              { label: "Embed URL", value: embedUrl! },
             ].map((item) => (
               <div key={item.label} className="mb-4 last:mb-0">
                 <label className="text-xs mb-1.5 block" style={{ color: "var(--text-muted)" }}>{item.label}</label>
@@ -160,6 +188,10 @@ export default function TimestampGenerator() {
             </a>
           </div>
         )}
+
+        <ResponsiveMediumBanner className="mt-8" />
+        <PartnerOfferLink />
+        <NativeAdBanner className="mt-10" />
       </div>
     </div>
   );

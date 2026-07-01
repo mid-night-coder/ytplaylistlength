@@ -252,6 +252,8 @@ export default function Home() {
               Calculate total watch time for any playlist or video at normal and faster playback speeds — instantly.
             </p>
 
+            <ResponsiveMediumBanner className="mb-6" />
+
             {/* ── Calculator card ── */}
             <div className="card p-5 sm:p-7 shadow-xl">
               <form onSubmit={handleSubmit} noValidate>
@@ -448,6 +450,8 @@ export default function Home() {
               </div>
             </div>
 
+            <PartnerOfferLink className="mt-6" />
+
             {/* ── History ── */}
             {history.length > 0 && !result && (
               <div className="mt-4">
@@ -546,6 +550,8 @@ export default function Home() {
                       totalSeconds={result.totalSeconds} customSpeed={customSpeedNum} />
                   )}
                 </div>
+
+                <ResponsiveMediumBanner className="my-6" />
 
                 {/* Daily Watch Plan */}
                 <div className="mb-4">

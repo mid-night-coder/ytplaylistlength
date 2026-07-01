@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ImageIcon, LinkIcon, ArrowRight } from "lucide-react";
+import { ResponsiveLeaderboard, NativeAdBanner, SkyscraperRow } from "@/app/components/AdBanner";
 
 export const metadata: Metadata = {
   title: "Free YouTube Tools",
@@ -37,6 +38,8 @@ export default function ToolsPage() {
           </p>
         </div>
 
+        <ResponsiveLeaderboard className="mb-8" />
+
         <div className="grid sm:grid-cols-2 gap-4">
           {TOOLS.map((tool) => (
             <Link
@@ -63,6 +66,9 @@ export default function ToolsPage() {
             </Link>
           ))}
         </div>
+
+        <NativeAdBanner className="mt-12" />
+        <SkyscraperRow className="mt-8" />
       </div>
     </div>
   );

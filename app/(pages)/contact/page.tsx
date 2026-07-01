@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { ResponsiveLeaderboard, NativeAdBanner, PartnerOfferLink } from "@/app/components/AdBanner";
+
 export const metadata: Metadata = { title: "Contact", description: "Contact us about the YouTube Playlist Length Calculator." };
 
 export default function ContactPage() {
@@ -6,6 +8,7 @@ export default function ContactPage() {
     <div className="min-h-screen py-12" style={{ backgroundColor: "var(--bg)" }}>
       <div className="mx-auto max-w-lg px-4 sm:px-6">
         <h1 className="text-3xl font-extrabold mb-4" style={{ color: "var(--text)" }}>Contact</h1>
+        <ResponsiveLeaderboard className="mb-6" />
         <p className="text-sm mb-6" style={{ color: "var(--text-muted)" }}>
           Have feedback, found a bug, or want to suggest a feature? Use the <strong style={{ color: "var(--text)" }}>Feedback</strong> button in the navigation bar — it&apos;s the fastest way to reach us.
         </p>
@@ -18,6 +21,8 @@ export default function ContactPage() {
             We read every message and typically respond within 24–48 hours.
           </p>
         </div>
+        <PartnerOfferLink className="mt-8" />
+        <NativeAdBanner className="mt-10" />
       </div>
     </div>
   );

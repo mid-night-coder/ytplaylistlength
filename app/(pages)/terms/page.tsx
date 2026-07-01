@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { ResponsiveLeaderboard, NativeAdBanner, PartnerOfferLink } from "@/app/components/AdBanner";
+
 export const metadata: Metadata = { title: "Terms of Service", description: "Terms of Service for YouTube Playlist Length Calculator." };
 
 export default function TermsPage() {
@@ -15,6 +17,7 @@ export default function TermsPage() {
       <div className="mx-auto max-w-2xl px-4 sm:px-6">
         <h1 className="text-3xl font-extrabold mb-2" style={{ color: "var(--text)" }}>Terms of Service</h1>
         <p className="text-xs mb-8" style={{ color: "var(--text-subtle)" }}>Effective date: January 1, 2025</p>
+        <ResponsiveLeaderboard className="mb-8" />
         <div className="space-y-6">
           {sections.map((s) => (
             <div key={s.title}>
@@ -23,6 +26,8 @@ export default function TermsPage() {
             </div>
           ))}
         </div>
+        <PartnerOfferLink className="mt-8" />
+        <NativeAdBanner className="mt-10" />
       </div>
     </div>
   );

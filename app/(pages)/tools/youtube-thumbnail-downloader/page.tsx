@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Download, AlertCircle, CheckCircle2, Loader2, ExternalLink } from "lucide-react";
+import { ResponsiveLeaderboard, ResponsiveMediumBanner, NativeAdBanner, PartnerOfferLink } from "@/app/components/AdBanner";
 
 interface ThumbnailRes {
   label: string;
@@ -75,6 +76,8 @@ export default function ThumbnailDownloader() {
             Download any YouTube video thumbnail in the highest quality available. Free and instant.
           </p>
         </div>
+
+        <ResponsiveLeaderboard className="mb-6" />
 
         {/* Input card */}
         <div className="card p-6 mb-6" style={{ backgroundColor: "var(--bg-card)" }}>
@@ -174,6 +177,10 @@ export default function ThumbnailDownloader() {
             </div>
           </div>
         )}
+
+        <ResponsiveMediumBanner className="mt-8" />
+        <PartnerOfferLink />
+        <NativeAdBanner className="mt-10" />
       </div>
     </div>
   );

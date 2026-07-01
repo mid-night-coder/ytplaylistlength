@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { ResponsiveLeaderboard, NativeAdBanner, PartnerOfferLink } from "@/app/components/AdBanner";
+
 export const metadata: Metadata = { title: "Privacy Policy", description: "Privacy Policy for YouTube Playlist Length Calculator." };
 
 export default function PrivacyPage() {
@@ -15,6 +17,7 @@ export default function PrivacyPage() {
       <div className="mx-auto max-w-2xl px-4 sm:px-6">
         <h1 className="text-3xl font-extrabold mb-2" style={{ color: "var(--text)" }}>Privacy Policy</h1>
         <p className="text-xs mb-8" style={{ color: "var(--text-subtle)" }}>Effective date: January 1, 2025</p>
+        <ResponsiveLeaderboard className="mb-8" />
         <div className="space-y-6">
           {sections.map((s) => (
             <div key={s.title}>
@@ -23,6 +26,8 @@ export default function PrivacyPage() {
             </div>
           ))}
         </div>
+        <PartnerOfferLink className="mt-8" />
+        <NativeAdBanner className="mt-10" />
       </div>
     </div>
   );

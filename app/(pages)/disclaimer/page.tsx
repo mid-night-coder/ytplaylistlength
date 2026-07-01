@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { ResponsiveLeaderboard, NativeAdBanner, PartnerOfferLink } from "@/app/components/AdBanner";
+
 export const metadata: Metadata = { title: "Disclaimer", description: "Disclaimer for YouTube Playlist Length Calculator." };
 
 export default function DisclaimerPage() {
@@ -7,6 +9,7 @@ export default function DisclaimerPage() {
       <div className="mx-auto max-w-2xl px-4 sm:px-6">
         <h1 className="text-3xl font-extrabold mb-2" style={{ color: "var(--text)" }}>Disclaimer</h1>
         <p className="text-xs mb-8" style={{ color: "var(--text-subtle)" }}>Last updated: January 1, 2025</p>
+        <ResponsiveLeaderboard className="mb-8" />
         <div className="space-y-6 text-sm leading-7" style={{ color: "var(--text-muted)" }}>
           <p>
             <strong style={{ color: "var(--text)" }}>YouTube Playlist Length Calculator</strong> is an independent, third-party tool. It is not affiliated with, endorsed by, or sponsored by YouTube, Google, or Alphabet Inc.
@@ -21,6 +24,8 @@ export default function DisclaimerPage() {
             &quot;YouTube&quot; is a trademark of Google LLC. All trademarks belong to their respective owners.
           </p>
         </div>
+        <PartnerOfferLink className="mt-8" />
+        <NativeAdBanner className="mt-10" />
       </div>
     </div>
   );
