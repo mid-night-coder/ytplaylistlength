@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
-import { ResponsiveMediumBanner, NativeAdBanner } from "@/app/components/AdBanner";
+import { ResponsiveMediumBanner, NativeAdBanner, AdCluster } from "@/app/components/AdBanner";
 
 const GUIDES: Record<string, { title: string; desc: string; readTime: string; content: string }> = {
   "how-to-watch-youtube-faster": {
@@ -223,12 +223,13 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           <p className="text-sm" style={{ color: "var(--text-muted)" }}>{guide.desc}</p>
         </header>
 
-        <ResponsiveMediumBanner className="my-6" />
+        <AdCluster count={3} />
 
         <article className="prose-custom">
           {renderMarkdown(guide.content)}
         </article>
 
+        <AdCluster count={4} />
         <NativeAdBanner className="mt-8" />
 
         <div className="mt-10 p-5 rounded-xl border" style={{ backgroundColor: "var(--bg-card)", borderColor: "var(--border)" }}>

@@ -171,3 +171,24 @@ export function PartnerOfferLink({ className = "" }: { className?: string }) {
     </div>
   );
 }
+
+/**
+ * High-Density Ad Cluster Block (Each count renders 7 ad units: Leaderboard, Medium, Skyscraper Row, and Partner Link)
+ * Used to achieve massive monetization density (>100 ads across the page).
+ */
+export function AdCluster({ count = 2, className = "" }: { count?: number; className?: string }) {
+  return (
+    <div className={`w-full flex flex-col items-center gap-4 my-6 ${className}`}>
+      {Array.from({ length: count }).map((_, idx) => (
+        <div key={idx} className="w-full flex flex-col items-center gap-3 border-y border-[var(--border)] py-4">
+          <ResponsiveLeaderboard />
+          <div className="w-full flex flex-wrap justify-center items-center gap-4">
+            <ResponsiveMediumBanner />
+            <SkyscraperRow />
+          </div>
+          <PartnerOfferLink />
+        </div>
+      ))}
+    </div>
+  );
+}

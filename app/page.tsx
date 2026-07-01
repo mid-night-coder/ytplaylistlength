@@ -16,6 +16,7 @@ import {
   NativeAdBanner,
   SkyscraperRow,
   PartnerOfferLink,
+  AdCluster,
 } from "./components/AdBanner";
 import { VideoList } from "./components/VideoList";
 import { DailyWatchPlan } from "./components/DailyWatchPlan";
@@ -224,11 +225,9 @@ export default function Home() {
     <>
       <Header onFeedback={() => setFeedbackOpen(true)} />
       <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
-      <ResponsiveLeaderboard className="pt-2" />
       <div className="mx-auto max-w-4xl px-4">
-        <SkyscraperRow className="my-2" />
+        <AdCluster count={3} />
       </div>
-      <PartnerOfferLink />
 
       <div className="min-h-screen" style={{ backgroundColor: "var(--bg)" }}>
         {/* ── Hero ── */}
@@ -455,10 +454,7 @@ export default function Home() {
               </div>
             </div>
 
-            <PartnerOfferLink className="mt-4" />
-            <ResponsiveMediumBanner className="my-4" />
-            <SkyscraperRow className="my-4" />
-            <ResponsiveLeaderboard className="my-4" />
+            <AdCluster count={3} />
 
             {/* ── History ── */}
             {history.length > 0 && !result && (
@@ -484,8 +480,7 @@ export default function Home() {
                     </button>
                   ))}
                 </div>
-                <NativeAdBanner className="my-4" />
-                <SkyscraperRow className="my-4" />
+                <AdCluster count={2} />
               </div>
             )}
 
@@ -513,8 +508,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <ResponsiveLeaderboard className="my-4" />
-                <SkyscraperRow className="my-4" />
+                <AdCluster count={2} />
 
                 {/* Summary stats */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
@@ -525,7 +519,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <ResponsiveMediumBanner className="my-4" />
+                <AdCluster count={2} />
 
                 {/* Longest / Shortest */}
                 {result.longestVideo && result.shortestVideo && result.totalVideos > 1 && (
@@ -551,8 +545,7 @@ export default function Home() {
                   </div>
                 )}
 
-                <SkyscraperRow className="my-4" />
-                <ResponsiveLeaderboard className="my-4" />
+                <AdCluster count={2} />
 
                 {/* Speed cards */}
                 <div className="flex items-center gap-1.5 mb-2">
@@ -569,17 +562,14 @@ export default function Home() {
                   )}
                 </div>
 
-                <ResponsiveMediumBanner className="my-6" />
-                <NativeAdBanner className="my-4" />
-                <PartnerOfferLink className="my-4" />
+                <AdCluster count={2} />
 
                 {/* Daily Watch Plan */}
                 <div className="mb-4">
                   <DailyWatchPlan totalSeconds={result.totalSeconds} />
                 </div>
 
-                <ResponsiveLeaderboard className="my-4" />
-                <SkyscraperRow className="my-4" />
+                <AdCluster count={2} />
 
                 {/* Video List */}
                 {result.videos && result.videos.length > 0 && (
@@ -588,7 +578,7 @@ export default function Home() {
                   </div>
                 )}
 
-                <ResponsiveMediumBanner className="my-6" />
+                <AdCluster count={2} />
 
                 {/* Try another */}
                 <button
@@ -599,11 +589,7 @@ export default function Home() {
                   ← Calculate another playlist
                 </button>
 
-                <ResponsiveLeaderboard className="mt-8" />
-                <ResponsiveMediumBanner className="mt-4" />
-                <NativeAdBanner className="mt-4" />
-                <SkyscraperRow className="mt-4" />
-                <PartnerOfferLink className="mt-4" />
+                <AdCluster count={2} />
               </div>
             )}
           </div>
@@ -612,7 +598,7 @@ export default function Home() {
         {/* ── How it works ── */}
         <section className="py-12 border-t" style={{ borderColor: "var(--border)" }} aria-labelledby="how-it-works">
           <div className="mx-auto max-w-2xl px-4 sm:px-6">
-            <ResponsiveLeaderboard className="mb-6" />
+            <AdCluster count={2} />
             <h2 id="how-it-works" className="section-title">How it works</h2>
             <div className="grid sm:grid-cols-3 gap-4">
               {[
@@ -627,23 +613,21 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <SkyscraperRow className="mt-8" />
-            <ResponsiveMediumBanner className="mt-4" />
+            <AdCluster count={3} />
           </div>
         </section>
 
         {/* Native Recommendation Grid Ad */}
         <div className="mx-auto max-w-4xl px-4">
-          <ResponsiveLeaderboard className="my-4" />
+          <AdCluster count={2} />
           <NativeAdBanner />
-          <SkyscraperRow className="my-4" />
-          <PartnerOfferLink className="my-4" />
+          <AdCluster count={2} />
         </div>
 
         {/* ── FAQ ── */}
         <section className="py-12 border-t" style={{ borderColor: "var(--border)" }} aria-labelledby="faq-heading">
           <div className="mx-auto max-w-2xl px-4 sm:px-6">
-            <ResponsiveMediumBanner className="mb-6" />
+            <AdCluster count={2} />
             <h2 id="faq-heading" className="section-title">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {[
@@ -664,23 +648,18 @@ export default function Home() {
                     </summary>
                     <p className="px-5 pb-4 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{item.a}</p>
                   </details>
-                  {i === 1 && <ResponsiveLeaderboard className="my-4" />}
-                  {i === 3 && <SkyscraperRow className="my-4" />}
-                  {i === 5 && <ResponsiveMediumBanner className="my-4" />}
+                  <AdCluster count={1} />
                 </div>
               ))}
             </div>
-            <ResponsiveLeaderboard className="mt-8" />
+            <AdCluster count={2} />
           </div>
         </section>
 
         {/* Skyscraper & Partner Ads Row */}
         <div className="mx-auto max-w-4xl px-4 pb-12">
-          <SkyscraperRow />
-          <ResponsiveMediumBanner className="my-4" />
-          <ResponsiveLeaderboard className="my-4" />
+          <AdCluster count={4} />
           <NativeAdBanner className="my-6" />
-          <PartnerOfferLink className="my-4" />
         </div>
       </div>
 
