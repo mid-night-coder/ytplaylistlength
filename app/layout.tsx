@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="antialiased" style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif" }}>
         <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
         {/* Global non-intrusive ad scripts (lazy loaded after page interactivity) */}
         <Script src="https://pl30154839.effectivecpmnetwork.com/4e/a2/93/4ea29356f9e54b45aaabfa3362084c1a.js" strategy="lazyOnload" />
         <Script src="https://pl30154836.effectivecpmnetwork.com/54/37/12/543712e9ee80d6268002c82c51974c94.js" strategy="lazyOnload" />
