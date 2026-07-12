@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 /**
  * Requested External Script Ad Unit:
@@ -186,6 +186,82 @@ export function AutoTagBannerGroup({ count = 10, className = "" }: { count?: num
 }
 
 /**
+ * CoinzUp PTP Small Window Player (Floating widget on home screen)
+ * Plays CoinzUp PTP ads continuously: https://coinzup.net/ptp?ptp_code=2vd2WyMDYu
+ */
+export function CoinzUpPtpWindow() {
+  const [minimized, setMinimized] = useState(false);
+  const [closed, setClosed] = useState(false);
+
+  if (closed) return null;
+
+  return (
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col bg-[var(--card)] border border-[var(--border)] rounded-xl shadow-2xl overflow-hidden w-80 sm:w-88 transition-all duration-300">
+      <div className="flex items-center justify-between px-3 py-2 bg-[var(--bg)] border-b border-[var(--border)] text-xs font-medium text-[var(--text)]">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span>Sponsored Ad Viewer</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => setMinimized(!minimized)}
+            className="p-1 hover:bg-[var(--border)] rounded text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
+            title={minimized ? "Expand" : "Minimize"}
+            aria-label={minimized ? "Expand" : "Minimize"}
+          >
+            {minimized ? "□" : "—"}
+          </button>
+          <button
+            onClick={() => setClosed(true)}
+            className="p-1 hover:bg-red-500/20 hover:text-red-500 rounded text-[var(--text-muted)] transition-colors"
+            title="Close"
+            aria-label="Close"
+          >
+            ✕
+          </button>
+        </div>
+      </div>
+
+      {!minimized && (
+        <div className="relative w-full h-48 sm:h-56 bg-black overflow-hidden">
+          <iframe
+            src="https://coinzup.net/ptp?ptp_code=2vd2WyMDYu"
+            className="w-full h-full border-none"
+            allow="autoplay"
+            title="CoinzUp PTP Ad Player"
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
+/**
+ * CoinzUp PTP Embedded Small Window Card
+ */
+export function CoinzUpPtpCard({ className = "" }: { className?: string }) {
+  return (
+    <div className={`w-full max-w-sm mx-auto my-4 flex flex-col bg-[var(--card)] border border-[var(--border)] rounded-xl shadow-lg overflow-hidden ${className}`}>
+      <div className="flex items-center justify-between px-3 py-2 bg-[var(--bg)] border-b border-[var(--border)] text-xs font-medium">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span>CoinzUp PTP Live Ad Window</span>
+        </div>
+        <span className="text-[var(--text-muted)] text-[10px]">SPONSORED</span>
+      </div>
+      <div className="w-full h-52 bg-black overflow-hidden">
+        <iframe
+          src="https://coinzup.net/ptp?ptp_code=2vd2WyMDYu"
+          className="w-full h-full border-none"
+          allow="autoplay"
+          title="CoinzUp PTP Embedded Player"
+        />
+      </div>
+    </div>
+  );
+}
+
+/**
  * All Banners Showcase - 1 of each banner type & size
  */
 export function AllBannersShowcase({ className = "" }: { className?: string }) {
@@ -221,6 +297,7 @@ export function AllBannersShowcase({ className = "" }: { className?: string }) {
           </a>
         ))}
       </div>
+      <CoinzUpPtpCard />
       <AutoTagAdUnit />
       <NewAdUnit />
     </div>
