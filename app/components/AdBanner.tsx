@@ -151,15 +151,17 @@ export function AutoTagAdUnit({ className = "" }: { className?: string }) {
         </style>
       </head>
       <body>
-        <script src="https://acsbapp.com/apps/app/dist/ext/aclib.js"></script>
+        <script id="aclib" type="text/javascript" src="https://acscdn.com/script/aclib.js"></script>
         <script type="text/javascript">
           function initTag() {
             if (typeof aclib !== 'undefined' && aclib.runAutoTag) {
-              aclib.runAutoTag({ zoneId: 'wybwhz9au5' });
+              aclib.runAutoTag({
+                  zoneId: 'wybwhz9au5',
+              });
             }
           }
           window.addEventListener('DOMContentLoaded', initTag);
-          setTimeout(initTag, 600);
+          setTimeout(initTag, 500);
         </script>
       </body>
     </html>
