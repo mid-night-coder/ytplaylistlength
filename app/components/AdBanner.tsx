@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 /**
  * Requested External Script Ad Unit:
@@ -131,51 +131,44 @@ export function AdsterraBannerGroup({ count = 10, className = "" }: { count?: nu
 
 /**
  * AutoTag Ad Unit (zoneId: wybwhz9au5)
+ * Runs directly on the real page DOM so AdCash / aclib domain verification succeeds.
  */
 export function AutoTagAdUnit({ className = "" }: { className?: string }) {
-  const iframeHtml = `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8" />
-        <style>
-          body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: transparent;
-            overflow: hidden;
-          }
-        </style>
-      </head>
-      <body>
-        <script id="aclib" type="text/javascript" src="https://acscdn.com/script/aclib.js"></script>
-        <script type="text/javascript">
-          function initTag() {
-            if (typeof aclib !== 'undefined' && aclib.runAutoTag) {
-              aclib.runAutoTag({
-                  zoneId: 'wybwhz9au5',
-              });
-            }
-          }
-          window.addEventListener('DOMContentLoaded', initTag);
-          setTimeout(initTag, 500);
-        </script>
-      </body>
-    </html>
-  `;
+  useEffect(() => {
+    const runTag = () => {
+      // @ts-ignore
+      if (typeof window !== "undefined" && window.aclib && typeof window.aclib.runAutoTag === "function") {
+        try {
+          // @ts-ignore
+          window.aclib.runAutoTag({
+            zoneId: "wybwhz9au5",
+          });
+        } catch (e) {
+          console.error("AutoTag error:", e);
+        }
+      }
+    };
+
+    if (!document.getElementById("aclib")) {
+      const script = document.createElement("script");
+      script.id = "aclib";
+      script.type = "text/javascript";
+      script.src = "https://acscdn.com/script/aclib.js";
+      script.async = true;
+      script.onload = () => {
+        runTag();
+      };
+      document.head.appendChild(script);
+    } else {
+      runTag();
+    }
+  }, []);
 
   return (
-    <div className={`w-full flex justify-center my-3 ${className}`}>
-      <iframe
-        srcDoc={iframeHtml}
-        style={{ width: "100%", minHeight: "90px", border: "none", overflow: "hidden" }}
-        scrolling="no"
-        title="Sponsored AutoTag Ad"
-      />
-    </div>
+    <div
+      className={`w-full flex justify-center items-center min-h-[60px] my-3 ${className}`}
+      data-zone-id="wybwhz9au5"
+    />
   );
 }
 
