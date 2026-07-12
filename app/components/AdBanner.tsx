@@ -374,7 +374,6 @@ export function AllBannersShowcase({ className = "" }: { className?: string }) {
           </a>
         ))}
       </div>
-      <CoinzUpPtpCard />
       <EffectiveCpmCard />
       <AutoTagAdUnit />
       <NewAdUnit />

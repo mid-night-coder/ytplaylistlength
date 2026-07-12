@@ -243,7 +243,6 @@ export default function Home() {
         {/* Main Center Content */}
         <div className="flex-1 min-w-0 max-w-4xl mx-auto">
           <div className="px-4">
-            <CoinzUpPtpCard />
             <EffectiveCpmCard />
             <AllBannersShowcase />
             <CoinzUpBanner />
