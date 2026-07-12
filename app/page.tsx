@@ -231,7 +231,7 @@ export default function Home() {
       <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
       <div className="w-full flex justify-center items-start min-h-screen overflow-x-hidden" style={{ backgroundColor: "var(--bg)" }}>
         {/* Left Ad Sidebar filling all left space */}
-        <SideAdColumn side="left" count={14} />
+        <SideAdColumn side="left" count={8} />
 
         {/* Main Center Content */}
         <div className="flex-1 min-w-0 max-w-4xl mx-auto">
@@ -689,7 +689,7 @@ export default function Home() {
       </div>
 
       {/* Right Ad Sidebar filling all right space */}
-      <SideAdColumn side="right" count={14} />
+      <SideAdColumn side="right" count={8} />
       </div>
 
       <Footer />

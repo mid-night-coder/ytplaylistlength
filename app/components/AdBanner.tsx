@@ -172,9 +172,9 @@ export function AllBannersShowcase({ className = "" }: { className?: string }) {
 
 /**
  * High-Density Ad Cluster Block
- * Each iteration renders CoinzUpBanner, AdsterraReferralBanner, alongside 5 NewAdUnit instances.
+ * Renders CoinzUpBanner, AdsterraReferralBanner, and 1 NewAdUnit per iteration.
  */
-export function AdCluster({ count = 2, className = "" }: { count?: number; className?: string }) {
+export function AdCluster({ count = 1, className = "" }: { count?: number; className?: string }) {
   return (
     <div className={`w-full flex flex-col items-center gap-4 my-6 ${className}`}>
       {Array.from({ length: count }).map((_, idx) => (
@@ -182,11 +182,6 @@ export function AdCluster({ count = 2, className = "" }: { count?: number; class
           <CoinzUpBanner />
           <AdsterraReferralBanner />
           <NewAdUnit />
-          <NewAdUnit />
-          <NewAdUnit />
-          <NewAdUnit />
-          <NewAdUnit />
-          <CoinzUpBanner />
         </div>
       ))}
     </div>
@@ -195,9 +190,9 @@ export function AdCluster({ count = 2, className = "" }: { count?: number; class
 
 /**
  * Side Ad Column for Left & Right Page Margins on Desktop
- * Fills the left and right empty spaces with ads from top to bottom.
+ * Fills the left and right empty spaces with ads from top to bottom (under 50 total limit across site).
  */
-export function SideAdColumn({ side = "left", count = 14 }: { side?: "left" | "right"; count?: number }) {
+export function SideAdColumn({ side = "left", count = 8 }: { side?: "left" | "right"; count?: number }) {
   return (
     <aside
       className={`hidden lg:flex flex-col w-64 xl:w-80 2xl:w-96 shrink-0 px-3 py-6 gap-6 ${
@@ -208,14 +203,11 @@ export function SideAdColumn({ side = "left", count = 14 }: { side?: "left" | "r
         <CoinzUpBanner />
         <AdsterraReferralBanner />
         <NewAdUnit />
-        <NewAdUnit />
       </div>
       {Array.from({ length: count }).map((_, idx) => (
         <div key={idx} className="flex flex-col gap-4 border-b border-[var(--border)] pb-6">
           <CoinzUpBanner />
           <AdsterraReferralBanner />
-          <NewAdUnit />
-          <NewAdUnit />
           <NewAdUnit />
         </div>
       ))}
