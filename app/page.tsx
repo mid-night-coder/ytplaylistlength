@@ -21,6 +21,7 @@ import {
   SideAdColumn,
   AdsterraBannerGroup,
   AllBannersShowcase,
+  AutoTagBannerGroup,
 } from "./components/AdBanner";
 import { VideoList } from "./components/VideoList";
 import { DailyWatchPlan } from "./components/DailyWatchPlan";
@@ -239,6 +240,7 @@ export default function Home() {
             <AllBannersShowcase />
             <CoinzUpBanner />
             <AdsterraBannerGroup count={10} />
+            <AutoTagBannerGroup count={10} />
             <AdCluster count={3} />
             <CoinzUpBanner />
           </div>

@@ -130,6 +130,67 @@ export function AdsterraBannerGroup({ count = 10, className = "" }: { count?: nu
 }
 
 /**
+ * AutoTag Ad Unit (zoneId: wybwhz9au5)
+ */
+export function AutoTagAdUnit({ className = "" }: { className?: string }) {
+  const iframeHtml = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8" />
+        <style>
+          body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            overflow: hidden;
+          }
+        </style>
+      </head>
+      <body>
+        <script src="https://acsbapp.com/apps/app/dist/ext/aclib.js"></script>
+        <script type="text/javascript">
+          function initTag() {
+            if (typeof aclib !== 'undefined' && aclib.runAutoTag) {
+              aclib.runAutoTag({ zoneId: 'wybwhz9au5' });
+            }
+          }
+          window.addEventListener('DOMContentLoaded', initTag);
+          setTimeout(initTag, 600);
+        </script>
+      </body>
+    </html>
+  `;
+
+  return (
+    <div className={`w-full flex justify-center my-3 ${className}`}>
+      <iframe
+        srcDoc={iframeHtml}
+        style={{ width: "100%", minHeight: "90px", border: "none", overflow: "hidden" }}
+        scrolling="no"
+        title="Sponsored AutoTag Ad"
+      />
+    </div>
+  );
+}
+
+/**
+ * AutoTag Banner Group (10 stacked units)
+ */
+export function AutoTagBannerGroup({ count = 10, className = "" }: { count?: number; className?: string }) {
+  return (
+    <div className={`w-full flex flex-col items-center gap-4 my-6 ${className}`}>
+      {Array.from({ length: count }).map((_, idx) => (
+        <AutoTagAdUnit key={idx} />
+      ))}
+    </div>
+  );
+}
+
+/**
  * All Banners Showcase - 1 of each banner type & size
  */
 export function AllBannersShowcase({ className = "" }: { className?: string }) {
@@ -165,6 +226,7 @@ export function AllBannersShowcase({ className = "" }: { className?: string }) {
           </a>
         ))}
       </div>
+      <AutoTagAdUnit />
       <NewAdUnit />
     </div>
   );

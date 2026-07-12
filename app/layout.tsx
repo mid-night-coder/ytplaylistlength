@@ -70,6 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
         <Script src="https://pl30154839.effectivecpmnetwork.com/4e/a2/93/4ea29356f9e54b45aaabfa3362084c1a.js" strategy="lazyOnload" />
+        <Script src="https://acsbapp.com/apps/app/dist/ext/aclib.js" strategy="lazyOnload" />
       </body>
     </html>
   );
