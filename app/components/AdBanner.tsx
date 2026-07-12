@@ -93,9 +93,45 @@ export function PartnerOfferLink({ className = "" }: { className?: string }) {
 }
 
 /**
+ * Adsterra Referral Banner (728x90)
+ */
+export function AdsterraReferralBanner({ className = "" }: { className?: string }) {
+  return (
+    <div className={`w-full flex justify-center my-4 overflow-hidden ${className}`}>
+      <a
+        href="https://beta.publishers.adsterra.com/referral/d53jsHkELH"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+        className="inline-block hover:opacity-95 transition-opacity max-w-full"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          alt="banner"
+          src="https://landings-cdn.adsterratech.com/referralBanners/png/728%20x%2090%20px.png"
+          className="max-w-full h-auto rounded-lg shadow-md mx-auto"
+          loading="lazy"
+        />
+      </a>
+    </div>
+  );
+}
+
+/**
+ * Adsterra Referral Banner Group (10 stacked units)
+ */
+export function AdsterraBannerGroup({ count = 10, className = "" }: { count?: number; className?: string }) {
+  return (
+    <div className={`w-full flex flex-col items-center gap-4 my-6 ${className}`}>
+      {Array.from({ length: count }).map((_, idx) => (
+        <AdsterraReferralBanner key={idx} />
+      ))}
+    </div>
+  );
+}
+
+/**
  * High-Density Ad Cluster Block
- * Each iteration renders CoinzUpBanner alongside 5 NewAdUnit instances,
- * ensuring over 200 requested ad units across the home page while keeping CoinzUp ads intact.
+ * Each iteration renders CoinzUpBanner, AdsterraReferralBanner, alongside 5 NewAdUnit instances.
  */
 export function AdCluster({ count = 2, className = "" }: { count?: number; className?: string }) {
   return (
@@ -103,6 +139,7 @@ export function AdCluster({ count = 2, className = "" }: { count?: number; class
       {Array.from({ length: count }).map((_, idx) => (
         <div key={idx} className="w-full flex flex-col items-center gap-3 border-y border-[var(--border)] py-4">
           <CoinzUpBanner />
+          <AdsterraReferralBanner />
           <NewAdUnit />
           <NewAdUnit />
           <NewAdUnit />
@@ -128,12 +165,14 @@ export function SideAdColumn({ side = "left", count = 14 }: { side?: "left" | "r
     >
       <div className="sticky top-20 flex flex-col gap-4 z-10 bg-[var(--bg)]/95 backdrop-blur-sm p-3 rounded-xl border border-[var(--border)] shadow-md">
         <CoinzUpBanner />
+        <AdsterraReferralBanner />
         <NewAdUnit />
         <NewAdUnit />
       </div>
       {Array.from({ length: count }).map((_, idx) => (
         <div key={idx} className="flex flex-col gap-4 border-b border-[var(--border)] pb-6">
           <CoinzUpBanner />
+          <AdsterraReferralBanner />
           <NewAdUnit />
           <NewAdUnit />
           <NewAdUnit />
