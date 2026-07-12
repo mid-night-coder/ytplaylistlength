@@ -130,6 +130,47 @@ export function AdsterraBannerGroup({ count = 10, className = "" }: { count?: nu
 }
 
 /**
+ * All Banners Showcase - 1 of each banner type & size
+ */
+export function AllBannersShowcase({ className = "" }: { className?: string }) {
+  const adsterraLink = "https://beta.publishers.adsterra.com/referral/d53jsHkELH";
+  const sizes = [
+    { name: "728x90 Leaderboard", src: "https://landings-cdn.adsterratech.com/referralBanners/png/728%20x%2090%20px.png" },
+    { name: "468x60 Full Banner", src: "https://landings-cdn.adsterratech.com/referralBanners/png/468%20x%2060%20px.png" },
+    { name: "300x250 Medium Rectangle", src: "https://landings-cdn.adsterratech.com/referralBanners/png/300%20x%20250%20px.png" },
+    { name: "160x600 Wide Skyscraper", src: "https://landings-cdn.adsterratech.com/referralBanners/png/160%20x%20600%20px.png" },
+    { name: "320x50 Mobile Leaderboard", src: "https://landings-cdn.adsterratech.com/referralBanners/png/320%20x%2050%20px.png" },
+  ];
+
+  return (
+    <div className={`w-full flex flex-col items-center gap-6 my-8 ${className}`}>
+      <CoinzUpBanner />
+      <div className="w-full flex flex-wrap items-center justify-center gap-6">
+        {sizes.map((size, index) => (
+          <a
+            key={index}
+            href={adsterraLink}
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            className="inline-block hover:opacity-95 transition-opacity max-w-full"
+            title={size.name}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              alt={size.name}
+              src={size.src}
+              className="max-w-full h-auto rounded-lg shadow-md mx-auto"
+              loading="lazy"
+            />
+          </a>
+        ))}
+      </div>
+      <NewAdUnit />
+    </div>
+  );
+}
+
+/**
  * High-Density Ad Cluster Block
  * Each iteration renders CoinzUpBanner, AdsterraReferralBanner, alongside 5 NewAdUnit instances.
  */
