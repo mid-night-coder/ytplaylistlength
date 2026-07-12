@@ -67,6 +67,32 @@ export function CoinzUpBanner({ className = "" }: { className?: string }) {
   );
 }
 
+/**
+ * RollerCoin Affiliate Banner (120x240)
+ */
+export function RollerCoinBanner({ className = "" }: { className?: string }) {
+  return (
+    <div className={`w-full flex justify-center my-3 overflow-hidden ${className}`}>
+      {/*Start rollercoin.com code*/}
+      <a
+        href="https://rollercoin.com/?r=ltu9svtd"
+        target="_blank"
+        rel="nofollow noopener noreferrer"
+        className="inline-block hover:opacity-95 transition-opacity"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://static.rollercoin.com/static/img/ref/gen2/w120h240.gif"
+          alt="120h240"
+          className="rounded shadow-md mx-auto"
+          loading="lazy"
+        />
+      </a>
+      {/*End rollercoin.com code*/}
+    </div>
+  );
+}
+
 export function AdBanner({ className = "" }: { className?: string }) {
   return <NewAdUnit className={className} />;
 }
@@ -374,6 +400,7 @@ export function AllBannersShowcase({ className = "" }: { className?: string }) {
           </a>
         ))}
       </div>
+      <RollerCoinBanner />
       <EffectiveCpmCard />
       <AutoTagAdUnit />
       <NewAdUnit />
@@ -391,6 +418,7 @@ export function AdCluster({ count = 1, className = "" }: { count?: number; class
       {Array.from({ length: count }).map((_, idx) => (
         <div key={idx} className="w-full flex flex-col items-center gap-3 border-y border-[var(--border)] py-4">
           <CoinzUpBanner />
+          <RollerCoinBanner />
           <AdsterraReferralBanner />
           <NewAdUnit />
         </div>
@@ -412,12 +440,14 @@ export function SideAdColumn({ side = "left", count = 8 }: { side?: "left" | "ri
     >
       <div className="sticky top-20 flex flex-col gap-4 z-10 bg-[var(--bg)]/95 backdrop-blur-sm p-3 rounded-xl border border-[var(--border)] shadow-md">
         <CoinzUpBanner />
+        <RollerCoinBanner />
         <AdsterraReferralBanner />
         <NewAdUnit />
       </div>
       {Array.from({ length: count }).map((_, idx) => (
         <div key={idx} className="flex flex-col gap-4 border-b border-[var(--border)] pb-6">
           <CoinzUpBanner />
+          <RollerCoinBanner />
           <AdsterraReferralBanner />
           <NewAdUnit />
         </div>
