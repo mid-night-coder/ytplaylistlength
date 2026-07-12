@@ -93,6 +93,33 @@ export function RollerCoinBanner({ className = "" }: { className?: string }) {
   );
 }
 
+/**
+ * A-ADS Adaptive Ad Unit (2447720)
+ */
+export function AAdsBanner({ className = "" }: { className?: string }) {
+  return (
+    <div
+      style={{ width: "100%", margin: "auto", position: "relative", zIndex: 10 }}
+      className={`my-3 overflow-hidden ${className}`}
+    >
+      <iframe
+        data-aa="2447720"
+        src="https://acceptable.a-ads.com/2447720/?size=Adaptive"
+        style={{
+          border: 0,
+          padding: 0,
+          width: "100%",
+          minHeight: "90px",
+          overflow: "hidden",
+          display: "block",
+          margin: "auto",
+        }}
+        title="A-ADS Sponsored Unit"
+      />
+    </div>
+  );
+}
+
 export function AdBanner({ className = "" }: { className?: string }) {
   return <NewAdUnit className={className} />;
 }
@@ -400,6 +427,7 @@ export function AllBannersShowcase({ className = "" }: { className?: string }) {
           </a>
         ))}
       </div>
+      <AAdsBanner />
       <RollerCoinBanner />
       <EffectiveCpmCard />
       <AutoTagAdUnit />
@@ -417,6 +445,7 @@ export function AdCluster({ count = 1, className = "" }: { count?: number; class
     <div className={`w-full flex flex-col items-center gap-4 my-6 ${className}`}>
       {Array.from({ length: count }).map((_, idx) => (
         <div key={idx} className="w-full flex flex-col items-center gap-3 border-y border-[var(--border)] py-4">
+          <AAdsBanner />
           <CoinzUpBanner />
           <RollerCoinBanner />
           <AdsterraReferralBanner />
@@ -439,6 +468,7 @@ export function SideAdColumn({ side = "left", count = 8 }: { side?: "left" | "ri
       }`}
     >
       <div className="sticky top-20 flex flex-col gap-4 z-10 bg-[var(--bg)]/95 backdrop-blur-sm p-3 rounded-xl border border-[var(--border)] shadow-md">
+        <AAdsBanner />
         <CoinzUpBanner />
         <RollerCoinBanner />
         <AdsterraReferralBanner />
@@ -446,6 +476,7 @@ export function SideAdColumn({ side = "left", count = 8 }: { side?: "left" | "ri
       </div>
       {Array.from({ length: count }).map((_, idx) => (
         <div key={idx} className="flex flex-col gap-4 border-b border-[var(--border)] pb-6">
+          <AAdsBanner />
           <CoinzUpBanner />
           <RollerCoinBanner />
           <AdsterraReferralBanner />
