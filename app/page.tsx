@@ -24,6 +24,8 @@ import {
   AutoTagBannerGroup,
   CoinzUpPtpWindow,
   CoinzUpPtpCard,
+  EffectiveCpmWindow,
+  EffectiveCpmCard,
 } from "./components/AdBanner";
 import { VideoList } from "./components/VideoList";
 import { DailyWatchPlan } from "./components/DailyWatchPlan";
@@ -231,6 +233,7 @@ export default function Home() {
   return (
     <>
       <CoinzUpPtpWindow />
+      <EffectiveCpmWindow />
       <Header onFeedback={() => setFeedbackOpen(true)} />
       <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
       <div className="w-full flex justify-center items-start min-h-screen overflow-x-hidden" style={{ backgroundColor: "var(--bg)" }}>
@@ -241,6 +244,7 @@ export default function Home() {
         <div className="flex-1 min-w-0 max-w-4xl mx-auto">
           <div className="px-4">
             <CoinzUpPtpCard />
+            <EffectiveCpmCard />
             <AllBannersShowcase />
             <CoinzUpBanner />
             <AdsterraBannerGroup count={10} />
