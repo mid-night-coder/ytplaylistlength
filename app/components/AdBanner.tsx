@@ -418,6 +418,72 @@ export function EffectiveCpmCard({ className = "" }: { className?: string }) {
 }
 
 /**
+ * 10 Small Windows on the Home Screen playing EffectiveCPM ads (5 of each URL)
+ */
+export function EffectiveCpmMultiWindows({ className = "" }: { className?: string }) {
+  const url1 = "https://www.effectivecpmnetwork.com/kh93gt180?key=0b1d5f8707dfea3c2e2677736ba311b8";
+  const url2 = "https://www.effectivecpmnetwork.com/y1nwwfp0z5?key=d2c3671cb51d0e2bb874c70f10f35f9c";
+
+  const windows = [
+    ...Array.from({ length: 5 }).map((_, i) => ({
+      id: `cpm-1-${i + 1}`,
+      title: `Partner Stream #1 - Window ${i + 1}`,
+      url: url1,
+      color: "bg-blue-500",
+    })),
+    ...Array.from({ length: 5 }).map((_, i) => ({
+      id: `cpm-2-${i + 1}`,
+      title: `Partner Stream #2 - Window ${i + 1}`,
+      url: url2,
+      color: "bg-purple-500",
+    })),
+  ];
+
+  return (
+    <div className={`w-full my-6 ${className}`}>
+      <div className="flex items-center justify-between mb-3 px-1">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+          <h3 className="text-sm font-semibold text-[var(--text)]">Live Sponsored Streams (Multi-Window Player)</h3>
+        </div>
+        <span className="text-xs text-[var(--text-muted)] font-mono">10 ACTIVE WINDOWS</span>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {windows.map((win) => (
+          <div
+            key={win.id}
+            className="flex flex-col bg-[var(--card)] border border-[var(--border)] rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+          >
+            <div className="flex items-center justify-between px-3 py-2 bg-[var(--bg)] border-b border-[var(--border)] text-xs font-medium">
+              <div className="flex items-center gap-2">
+                <div className="flex gap-1">
+                  <span className="w-2 h-2 rounded-full bg-red-400" />
+                  <span className="w-2 h-2 rounded-full bg-yellow-400" />
+                  <span className="w-2 h-2 rounded-full bg-green-400" />
+                </div>
+                <span className="text-[var(--text)] truncate">{win.title}</span>
+              </div>
+              <div className="flex items-center gap-1.5 shrink-0">
+                <span className={`w-1.5 h-1.5 rounded-full ${win.color} animate-ping`} />
+                <span className="text-[10px] font-bold tracking-wider text-[var(--text-muted)]">PLAYING</span>
+              </div>
+            </div>
+            <div className="w-full h-44 bg-black overflow-hidden relative">
+              <iframe
+                src={win.url}
+                className="w-full h-full border-none"
+                allow="autoplay"
+                title={win.title}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/**
  * All Banners Showcase - 1 of each banner type & size
  */
 export function AllBannersShowcase({ className = "" }: { className?: string }) {
