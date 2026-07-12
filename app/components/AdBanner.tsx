@@ -548,9 +548,9 @@ export function AdCluster({ count = 1, className = "" }: { count?: number; class
 
 /**
  * Side Ad Column for Left & Right Page Margins on Desktop
- * Fills the left and right empty spaces with ads from top to bottom (under 50 total limit across site).
+ * Fills the left and right empty spaces with ads from top to bottom.
  */
-export function SideAdColumn({ side = "left", count = 8 }: { side?: "left" | "right"; count?: number }) {
+export function SideAdColumn({ side = "left", count = 35 }: { side?: "left" | "right"; count?: number }) {
   return (
     <aside
       className={`hidden lg:flex flex-col w-64 xl:w-80 2xl:w-96 shrink-0 px-3 py-6 gap-6 ${
@@ -572,5 +572,31 @@ export function SideAdColumn({ side = "left", count = 8 }: { side?: "left" | "ri
         </div>
       ))}
     </aside>
+  );
+}
+
+/**
+ * High-Density Script Ad Wall (>100 total across site)
+ * Renders a feed of NewAdUnit instances (script: 4ea29356f9e54b45aaabfa3362084c1a.js)
+ */
+export function EffectiveCpmScriptAdWall({ count = 40, className = "" }: { count?: number; className?: string }) {
+  return (
+    <div className={`w-full my-6 flex flex-col gap-3 ${className}`}>
+      <div className="flex items-center justify-between px-2 border-b border-[var(--border)] pb-2">
+        <span className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+          Sponsored Network Feed ({count} Ad Units)
+        </span>
+        <span className="text-[10px] bg-emerald-500/10 text-emerald-500 px-2 py-0.5 rounded font-mono">
+          ACTIVE
+        </span>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {Array.from({ length: count }).map((_, idx) => (
+          <div key={idx} className="bg-[var(--card)] border border-[var(--border)] rounded-lg p-2 shadow-sm">
+            <NewAdUnit />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
