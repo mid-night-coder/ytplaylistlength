@@ -114,3 +114,31 @@ export function AdCluster({ count = 2, className = "" }: { count?: number; class
     </div>
   );
 }
+
+/**
+ * Side Ad Column for Left & Right Page Margins on Desktop
+ * Fills the left and right empty spaces with ads from top to bottom.
+ */
+export function SideAdColumn({ side = "left", count = 14 }: { side?: "left" | "right"; count?: number }) {
+  return (
+    <aside
+      className={`hidden lg:flex flex-col w-64 xl:w-80 2xl:w-96 shrink-0 px-3 py-6 gap-6 ${
+        side === "left" ? "border-r border-[var(--border)]" : "border-l border-[var(--border)]"
+      }`}
+    >
+      <div className="sticky top-20 flex flex-col gap-4 z-10 bg-[var(--bg)]/95 backdrop-blur-sm p-3 rounded-xl border border-[var(--border)] shadow-md">
+        <CoinzUpBanner />
+        <NewAdUnit />
+        <NewAdUnit />
+      </div>
+      {Array.from({ length: count }).map((_, idx) => (
+        <div key={idx} className="flex flex-col gap-4 border-b border-[var(--border)] pb-6">
+          <CoinzUpBanner />
+          <NewAdUnit />
+          <NewAdUnit />
+          <NewAdUnit />
+        </div>
+      ))}
+    </aside>
+  );
+}

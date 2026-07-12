@@ -18,6 +18,7 @@ import {
   PartnerOfferLink,
   AdCluster,
   CoinzUpBanner,
+  SideAdColumn,
 } from "./components/AdBanner";
 import { VideoList } from "./components/VideoList";
 import { DailyWatchPlan } from "./components/DailyWatchPlan";
@@ -226,13 +227,19 @@ export default function Home() {
     <>
       <Header onFeedback={() => setFeedbackOpen(true)} />
       <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
-      <div className="mx-auto max-w-4xl px-4">
-        <CoinzUpBanner />
-        <AdCluster count={3} />
-        <CoinzUpBanner />
-      </div>
+      <div className="w-full flex justify-center items-start min-h-screen overflow-x-hidden" style={{ backgroundColor: "var(--bg)" }}>
+        {/* Left Ad Sidebar filling all left space */}
+        <SideAdColumn side="left" count={14} />
 
-      <div className="min-h-screen" style={{ backgroundColor: "var(--bg)" }}>
+        {/* Main Center Content */}
+        <div className="flex-1 min-w-0 max-w-4xl mx-auto">
+          <div className="px-4">
+            <CoinzUpBanner />
+            <AdCluster count={3} />
+            <CoinzUpBanner />
+          </div>
+
+          <div style={{ backgroundColor: "var(--bg)" }}>
         {/* ── Hero ── */}
         <section className="relative overflow-hidden py-10 sm:py-14">
           {/* Glow blobs */}
@@ -674,6 +681,11 @@ export default function Home() {
           <AdCluster count={4} />
           <NativeAdBanner className="my-6" />
         </div>
+      </div>
+      </div>
+
+      {/* Right Ad Sidebar filling all right space */}
+      <SideAdColumn side="right" count={14} />
       </div>
 
       <Footer />
