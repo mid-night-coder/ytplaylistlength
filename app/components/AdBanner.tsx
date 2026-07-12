@@ -94,28 +94,54 @@ export function RollerCoinBanner({ className = "" }: { className?: string }) {
 }
 
 /**
- * A-ADS Adaptive Ad Unit (2447720)
+ * A-ADS Sticky Bottom Bar Ad Unit (2447720) - Strictly 1 across website
  */
-export function AAdsBanner({ className = "" }: { className?: string }) {
+export function AAdsStickyBottomBanner() {
+  const [closed, setClosed] = useState(false);
+  if (closed) return null;
+
   return (
-    <div
-      style={{ width: "100%", margin: "auto", position: "relative", zIndex: 10 }}
-      className={`my-3 overflow-hidden ${className}`}
-    >
-      <iframe
-        data-aa="2447720"
-        src="https://acceptable.a-ads.com/2447720/?size=Adaptive"
-        style={{
-          border: 0,
-          padding: 0,
-          width: "100%",
-          minHeight: "90px",
-          overflow: "hidden",
-          display: "block",
-          margin: "auto",
-        }}
-        title="A-ADS Sponsored Unit"
-      />
+    <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 99999, width: "100%" }}>
+      <div style={{ width: "100%", height: "auto", position: "relative", textAlign: "center", margin: "auto" }}>
+        <button
+          type="button"
+          onClick={() => setClosed(true)}
+          style={{
+            top: "50%",
+            transform: "translateY(-50%)",
+            right: "24px",
+            position: "absolute",
+            borderRadius: "4px",
+            background: "rgba(248, 248, 249, 0.85)",
+            padding: "4px",
+            zIndex: 99999,
+            cursor: "pointer",
+            border: "1px solid #ccc",
+          }}
+          aria-label="Close Ad"
+        >
+          <svg fill="#000000" height="16px" width="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490">
+            <polygon points="456.851,0 245,212.564 33.149,0 0.708,32.337 212.669,245.004 0.708,457.678 33.149,490 245,277.443 456.851,490 489.292,457.678 277.331,245.004 489.292,32.337 " />
+          </svg>
+        </button>
+        <div id="frame" style={{ width: "100%", margin: "auto", position: "relative", zIndex: 99998 }}>
+          <iframe
+            data-aa="2447720"
+            src="https://acceptable.a-ads.com/2447720/?size=Adaptive"
+            style={{
+              border: 0,
+              padding: 0,
+              width: "70%",
+              minHeight: "90px",
+              height: "auto",
+              overflow: "hidden",
+              margin: "auto",
+              display: "block",
+            }}
+            title="A-ADS Sticky Bottom Unit"
+          />
+        </div>
+      </div>
     </div>
   );
 }
@@ -427,7 +453,6 @@ export function AllBannersShowcase({ className = "" }: { className?: string }) {
           </a>
         ))}
       </div>
-      <AAdsBanner />
       <RollerCoinBanner />
       <EffectiveCpmCard />
       <AutoTagAdUnit />
@@ -445,7 +470,6 @@ export function AdCluster({ count = 1, className = "" }: { count?: number; class
     <div className={`w-full flex flex-col items-center gap-4 my-6 ${className}`}>
       {Array.from({ length: count }).map((_, idx) => (
         <div key={idx} className="w-full flex flex-col items-center gap-3 border-y border-[var(--border)] py-4">
-          <AAdsBanner />
           <CoinzUpBanner />
           <RollerCoinBanner />
           <AdsterraReferralBanner />
@@ -468,7 +492,6 @@ export function SideAdColumn({ side = "left", count = 8 }: { side?: "left" | "ri
       }`}
     >
       <div className="sticky top-20 flex flex-col gap-4 z-10 bg-[var(--bg)]/95 backdrop-blur-sm p-3 rounded-xl border border-[var(--border)] shadow-md">
-        <AAdsBanner />
         <CoinzUpBanner />
         <RollerCoinBanner />
         <AdsterraReferralBanner />
@@ -476,7 +499,6 @@ export function SideAdColumn({ side = "left", count = 8 }: { side?: "left" | "ri
       </div>
       {Array.from({ length: count }).map((_, idx) => (
         <div key={idx} className="flex flex-col gap-4 border-b border-[var(--border)] pb-6">
-          <AAdsBanner />
           <CoinzUpBanner />
           <RollerCoinBanner />
           <AdsterraReferralBanner />

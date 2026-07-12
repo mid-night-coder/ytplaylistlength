@@ -26,7 +26,7 @@ import {
   CoinzUpPtpCard,
   EffectiveCpmWindow,
   EffectiveCpmCard,
-  AAdsBanner,
+  AAdsStickyBottomBanner,
 } from "./components/AdBanner";
 import { VideoList } from "./components/VideoList";
 import { DailyWatchPlan } from "./components/DailyWatchPlan";
@@ -235,6 +235,7 @@ export default function Home() {
     <>
       <CoinzUpPtpWindow />
       <EffectiveCpmWindow />
+      <AAdsStickyBottomBanner />
       <Header onFeedback={() => setFeedbackOpen(true)} />
       <FeedbackModal open={feedbackOpen} onClose={() => setFeedbackOpen(false)} />
       <div className="w-full flex justify-center items-start min-h-screen overflow-x-hidden" style={{ backgroundColor: "var(--bg)" }}>
@@ -244,7 +245,6 @@ export default function Home() {
         {/* Main Center Content */}
         <div className="flex-1 min-w-0 max-w-4xl mx-auto">
           <div className="px-4">
-            <AAdsBanner />
             <EffectiveCpmCard />
             <AllBannersShowcase />
             <CoinzUpBanner />
