@@ -562,10 +562,10 @@ export function SideAdColumn({ side = "left", count = 35 }: { side?: "left" | "r
 }
 
 /**
- * EffectiveCPM Script Ad Wall (Exactly 10 units across site)
- * Renders exactly 10 NewAdUnit instances (script: 4ea29356f9e54b45aaabfa3362084c1a.js)
+ * EffectiveCPM Script Ad Wall (Exactly 100 units across site)
+ * Renders exactly 100 NewAdUnit instances (script: 4ea29356f9e54b45aaabfa3362084c1a.js)
  */
-export function EffectiveCpmScriptAdWall({ count = 10, className = "" }: { count?: number; className?: string }) {
+export function EffectiveCpmScriptAdWall({ count = 100, className = "" }: { count?: number; className?: string }) {
   return (
     <div className={`w-full my-6 flex flex-col gap-3 ${className}`}>
       <div className="flex items-center justify-between px-2 border-b border-[var(--border)] pb-2">
