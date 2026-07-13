@@ -44,6 +44,45 @@ export function NewAdUnit({ className = "" }: { className?: string }) {
 }
 
 /**
+ * Ads-Bitcoin Ad Unit (rcd: MjE3MA==) - Strictly 1 instance across site
+ */
+export function AdsBitcoinBanner({ className = "" }: { className?: string }) {
+  const iframeHtml = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8" />
+        <style>
+          body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            overflow: hidden;
+          }
+        </style>
+      </head>
+      <body>
+        <script type="text/javascript" src="https://ads-bitcoin.com/app/codes/zone?rcd=MjE3MA=="></script>
+      </body>
+    </html>
+  `;
+
+  return (
+    <div className={`w-full flex justify-center my-4 overflow-hidden ${className}`}>
+      <iframe
+        srcDoc={iframeHtml}
+        style={{ width: "100%", minHeight: "90px", border: "none", overflow: "hidden" }}
+        scrolling="no"
+        title="Ads Bitcoin Sponsored Banner"
+      />
+    </div>
+  );
+}
+
+/**
  * CoinzUp Banner Unit (Kept as requested!)
  */
 export function CoinzUpBanner({ className = "" }: { className?: string }) {
