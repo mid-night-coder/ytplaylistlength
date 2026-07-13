@@ -631,3 +631,76 @@ export function AffiliateBannersQuad({ className = "" }: { className?: string })
     </div>
   );
 }
+
+/**
+ * CryptoTab Browser Affiliate Skyscraper (120x600)
+ */
+export function CryptoTabSkyscraper({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex justify-center my-2 overflow-hidden ${className}`}>
+      <a
+        href="https://cryptotabbrowser.com/landing/80/25127157"
+        target="_blank"
+        rel="nofollow noopener noreferrer"
+        className="inline-block hover:opacity-95 transition-opacity"
+        style={{ display: "block", width: "120px", height: "auto", maxWidth: "100%" }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://cdn.cryptobrowser.store/media/pb/503/98d5c6bca1f34d5c957b0f61e48e4e43.jpg"
+          srcSet="https://cdn.cryptobrowser.store/media/pb/503/eb3a62f3076e4b6ab9ee054b3b932ac4.jpg 2x"
+          alt="CryptoTab Browser 120x600 Banner"
+          className="max-w-full h-auto rounded-lg shadow-md mx-auto"
+          loading="lazy"
+        />
+      </a>
+    </div>
+  );
+}
+
+/**
+ * CryptoTab Browser Affiliate Square Banner (250x250)
+ */
+export function CryptoTabSquare({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex justify-center my-2 overflow-hidden ${className}`}>
+      <a
+        href="https://cryptotabbrowser.com/landing/80/25127157"
+        target="_blank"
+        rel="nofollow noopener noreferrer"
+        className="inline-block hover:opacity-95 transition-opacity"
+        style={{ display: "block", width: "250px", height: "auto", maxWidth: "100%" }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://cdn.cryptobrowser.store/media/pb/503/98d5c6bca1f34d5c957b0f61e48e4e43.jpg"
+          srcSet="https://cdn.cryptobrowser.store/media/pb/503/eb3a62f3076e4b6ab9ee054b3b932ac4.jpg 2x"
+          alt="CryptoTab Browser 250x250 Banner"
+          className="w-full h-auto rounded-lg shadow-md mx-auto"
+          loading="lazy"
+        />
+      </a>
+    </div>
+  );
+}
+
+/**
+ * CryptoTab Showcase Section (Exactly 2 Skyscrapers + Exactly 2 Square Banners)
+ */
+export function CryptoTabShowcase({ className = "" }: { className?: string }) {
+  return (
+    <div className={`w-full my-6 flex flex-col gap-6 ${className}`}>
+      <div className="flex flex-col gap-3">
+        <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] px-1">
+          CryptoTab Browser Sponsored Banners (2 Skyscrapers &amp; 2 Squares Active)
+        </h4>
+        <div className="flex flex-wrap items-center justify-center gap-6">
+          <CryptoTabSkyscraper />
+          <CryptoTabSquare />
+          <CryptoTabSquare />
+          <CryptoTabSkyscraper />
+        </div>
+      </div>
+    </div>
+  );
+}

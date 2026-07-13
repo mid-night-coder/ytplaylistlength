@@ -31,6 +31,7 @@ import {
   EffectiveCpmScriptAdWall,
   AdsBitcoinBanner,
   AffiliateBannersQuad,
+  CryptoTabShowcase,
 } from "./components/AdBanner";
 import { VideoList } from "./components/VideoList";
 import { DailyWatchPlan } from "./components/DailyWatchPlan";
@@ -255,6 +256,7 @@ export default function Home() {
             <EffectiveCpmCard />
             <AllBannersShowcase />
             <AffiliateBannersQuad />
+            <CryptoTabShowcase />
             <AutoTagBannerGroup count={10} />
             <AdCluster count={3} />
           </div>
