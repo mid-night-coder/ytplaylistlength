@@ -32,6 +32,7 @@ import {
   AdsBitcoinBanner,
   AffiliateBannersQuad,
   CryptoTabShowcase,
+  VercelSiteMultiWindows,
 } from "./components/AdBanner";
 import { VideoList } from "./components/VideoList";
 import { DailyWatchPlan } from "./components/DailyWatchPlan";
@@ -251,6 +252,7 @@ export default function Home() {
         <div className="flex-1 min-w-0 max-w-4xl mx-auto">
           <div className="px-4">
             <AdsBitcoinBanner />
+            <VercelSiteMultiWindows />
             <EffectiveCpmMultiWindows />
             <EffectiveCpmScriptAdWall count={100} />
             <EffectiveCpmCard />

@@ -704,3 +704,65 @@ export function CryptoTabShowcase({ className = "" }: { className?: string }) {
     </div>
   );
 }
+
+/**
+ * 10 New Small Windows opening https://ytplaylistlengthcal.vercel.app/
+ */
+export function VercelSiteMultiWindows({ className = "" }: { className?: string }) {
+  const targetUrl = "https://ytplaylistlengthcal.vercel.app/";
+
+  const windows = Array.from({ length: 10 }).map((_, idx) => ({
+    id: `vercel-win-${idx + 1}`,
+    title: `App Window #${idx + 1} - ytplaylistlengthcal`,
+    url: targetUrl,
+  }));
+
+  return (
+    <div className={`w-full my-6 ${className}`}>
+      <div className="flex items-center justify-between mb-3 px-1">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse" />
+          <h3 className="text-sm font-semibold text-[var(--text)]">Site Multi-Window Preview (10 Windows)</h3>
+        </div>
+        <span className="text-xs text-[var(--text-muted)] font-mono">10 ACTIVE WINDOWS</span>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {windows.map((win) => (
+          <div
+            key={win.id}
+            className="flex flex-col bg-[var(--card)] border border-[var(--border)] rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+          >
+            <div className="flex items-center justify-between px-3 py-2 bg-[var(--bg)] border-b border-[var(--border)] text-xs font-medium">
+              <div className="flex items-center gap-2">
+                <div className="flex gap-1">
+                  <span className="w-2 h-2 rounded-full bg-red-400" />
+                  <span className="w-2 h-2 rounded-full bg-yellow-400" />
+                  <span className="w-2 h-2 rounded-full bg-green-400" />
+                </div>
+                <span className="text-[var(--text)] truncate">{win.title}</span>
+              </div>
+              <div className="flex items-center gap-1.5 shrink-0">
+                <a
+                  href={win.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] bg-blue-500/10 text-blue-500 hover:bg-blue-500/20 px-2 py-0.5 rounded font-mono transition-colors"
+                >
+                  OPEN EXTERNAL ↗
+                </a>
+              </div>
+            </div>
+            <div className="w-full h-48 bg-[var(--bg)] overflow-hidden relative">
+              <iframe
+                src={win.url}
+                className="w-full h-full border-none"
+                title={win.title}
+                loading="lazy"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
