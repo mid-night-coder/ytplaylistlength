@@ -539,60 +539,38 @@ export function AllBannersShowcase({ className = "" }: { className?: string }) {
     <div className={`w-full flex flex-col items-center gap-6 my-8 ${className}`}>
       <EffectiveCpmCard />
       <AutoTagAdUnit />
-      <NewAdUnit />
     </div>
   );
 }
 
 /**
- * High-Density Ad Cluster Block
- * Renders 1 NewAdUnit per iteration.
+ * High-Density Ad Cluster Block (disabled so script ads total exactly 10)
  */
 export function AdCluster({ count = 1, className = "" }: { count?: number; className?: string }) {
-  return (
-    <div className={`w-full flex flex-col items-center gap-4 my-6 ${className}`}>
-      {Array.from({ length: count }).map((_, idx) => (
-        <div key={idx} className="w-full flex flex-col items-center gap-3 border-y border-[var(--border)] py-4">
-          <NewAdUnit />
-        </div>
-      ))}
-    </div>
-  );
+  void count;
+  void className;
+  return null;
 }
 
 /**
- * Side Ad Column for Left & Right Page Margins on Desktop
- * Fills the left and right empty spaces with ads from top to bottom.
+ * Side Ad Column for Left & Right Page Margins on Desktop (disabled so script ads total exactly 10)
  */
 export function SideAdColumn({ side = "left", count = 35 }: { side?: "left" | "right"; count?: number }) {
-  return (
-    <aside
-      className={`hidden lg:flex flex-col w-64 xl:w-80 2xl:w-96 shrink-0 px-3 py-6 gap-6 ${
-        side === "left" ? "border-r border-[var(--border)]" : "border-l border-[var(--border)]"
-      }`}
-    >
-      <div className="sticky top-20 flex flex-col gap-4 z-10 bg-[var(--bg)]/95 backdrop-blur-sm p-3 rounded-xl border border-[var(--border)] shadow-md">
-        <NewAdUnit />
-      </div>
-      {Array.from({ length: count }).map((_, idx) => (
-        <div key={idx} className="flex flex-col gap-4 border-b border-[var(--border)] pb-6">
-          <NewAdUnit />
-        </div>
-      ))}
-    </aside>
-  );
+  void side;
+  void count;
+  return null;
 }
 
 /**
- * High-Density Script Ad Wall (>100 total across site)
- * Renders a feed of NewAdUnit instances (script: 4ea29356f9e54b45aaabfa3362084c1a.js)
+ * EffectiveCPM Script Ad Wall (Exactly 10 units across site)
+ * Renders exactly 10 NewAdUnit instances (script: 4ea29356f9e54b45aaabfa3362084c1a.js)
  */
-export function EffectiveCpmScriptAdWall({ count = 40, className = "" }: { count?: number; className?: string }) {
+export function EffectiveCpmScriptAdWall({ count = 10, className = "" }: { count?: number; className?: string }) {
   return (
     <div className={`w-full my-6 flex flex-col gap-3 ${className}`}>
       <div className="flex items-center justify-between px-2 border-b border-[var(--border)] pb-2">
         <span className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
-          Sponsored Network Feed ({count} Ad Units)
+          Sponsored Network Feed ({count} Active Ad Units)
         </span>
         <span className="text-[10px] bg-emerald-500/10 text-emerald-500 px-2 py-0.5 rounded font-mono">
           ACTIVE

@@ -251,7 +251,7 @@ export default function Home() {
           <div className="px-4">
             <AdsBitcoinBanner />
             <EffectiveCpmMultiWindows />
-            <EffectiveCpmScriptAdWall count={40} />
+            <EffectiveCpmScriptAdWall count={10} />
             <EffectiveCpmCard />
             <AllBannersShowcase />
             <AffiliateBannersQuad />
