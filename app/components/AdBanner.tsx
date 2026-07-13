@@ -537,28 +537,6 @@ export function AllBannersShowcase({ className = "" }: { className?: string }) {
 
   return (
     <div className={`w-full flex flex-col items-center gap-6 my-8 ${className}`}>
-      <CoinzUpBanner />
-      <div className="w-full flex flex-wrap items-center justify-center gap-6">
-        {sizes.map((size, index) => (
-          <a
-            key={index}
-            href={adsterraLink}
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-            className="inline-block hover:opacity-95 transition-opacity max-w-full"
-            title={size.name}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              alt={size.name}
-              src={size.src}
-              className="max-w-full h-auto rounded-lg shadow-md mx-auto"
-              loading="lazy"
-            />
-          </a>
-        ))}
-      </div>
-      <RollerCoinBanner />
       <EffectiveCpmCard />
       <AutoTagAdUnit />
       <NewAdUnit />
@@ -568,16 +546,13 @@ export function AllBannersShowcase({ className = "" }: { className?: string }) {
 
 /**
  * High-Density Ad Cluster Block
- * Renders CoinzUpBanner, AdsterraReferralBanner, and 1 NewAdUnit per iteration.
+ * Renders 1 NewAdUnit per iteration.
  */
 export function AdCluster({ count = 1, className = "" }: { count?: number; className?: string }) {
   return (
     <div className={`w-full flex flex-col items-center gap-4 my-6 ${className}`}>
       {Array.from({ length: count }).map((_, idx) => (
         <div key={idx} className="w-full flex flex-col items-center gap-3 border-y border-[var(--border)] py-4">
-          <CoinzUpBanner />
-          <RollerCoinBanner />
-          <AdsterraReferralBanner />
           <NewAdUnit />
         </div>
       ))}
@@ -597,16 +572,10 @@ export function SideAdColumn({ side = "left", count = 35 }: { side?: "left" | "r
       }`}
     >
       <div className="sticky top-20 flex flex-col gap-4 z-10 bg-[var(--bg)]/95 backdrop-blur-sm p-3 rounded-xl border border-[var(--border)] shadow-md">
-        <CoinzUpBanner />
-        <RollerCoinBanner />
-        <AdsterraReferralBanner />
         <NewAdUnit />
       </div>
       {Array.from({ length: count }).map((_, idx) => (
         <div key={idx} className="flex flex-col gap-4 border-b border-[var(--border)] pb-6">
-          <CoinzUpBanner />
-          <RollerCoinBanner />
-          <AdsterraReferralBanner />
           <NewAdUnit />
         </div>
       ))}
@@ -635,6 +604,51 @@ export function EffectiveCpmScriptAdWall({ count = 40, className = "" }: { count
             <NewAdUnit />
           </div>
         ))}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Affiliate Banners Quad Block (Exactly 4 of each: CoinzUp, RollerCoin, Adsterra)
+ */
+export function AffiliateBannersQuad({ className = "" }: { className?: string }) {
+  return (
+    <div className={`w-full my-6 flex flex-col gap-6 ${className}`}>
+      {/* Exactly 4 CoinzUp Animated Banners */}
+      <div className="flex flex-col gap-3">
+        <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] px-1">
+          CoinzUp Sponsored Banners (4 Active)
+        </h4>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {Array.from({ length: 4 }).map((_, idx) => (
+            <CoinzUpBanner key={`coinzup-${idx}`} className="!my-0" />
+          ))}
+        </div>
+      </div>
+
+      {/* Exactly 4 RollerCoin Affiliate Banners */}
+      <div className="flex flex-col gap-3">
+        <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] px-1">
+          RollerCoin Partner Banners (4 Active)
+        </h4>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          {Array.from({ length: 4 }).map((_, idx) => (
+            <RollerCoinBanner key={`rollercoin-${idx}`} className="!my-0" />
+          ))}
+        </div>
+      </div>
+
+      {/* Exactly 4 Adsterra Referral Banners */}
+      <div className="flex flex-col gap-3">
+        <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] px-1">
+          Adsterra Publisher Banners (4 Active)
+        </h4>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {Array.from({ length: 4 }).map((_, idx) => (
+            <AdsterraReferralBanner key={`adsterra-${idx}`} className="!my-0" />
+          ))}
+        </div>
       </div>
     </div>
   );

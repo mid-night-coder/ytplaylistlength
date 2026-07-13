@@ -30,6 +30,7 @@ import {
   EffectiveCpmMultiWindows,
   EffectiveCpmScriptAdWall,
   AdsBitcoinBanner,
+  AffiliateBannersQuad,
 } from "./components/AdBanner";
 import { VideoList } from "./components/VideoList";
 import { DailyWatchPlan } from "./components/DailyWatchPlan";
@@ -253,11 +254,9 @@ export default function Home() {
             <EffectiveCpmScriptAdWall count={40} />
             <EffectiveCpmCard />
             <AllBannersShowcase />
-            <CoinzUpBanner />
-            <AdsterraBannerGroup count={10} />
+            <AffiliateBannersQuad />
             <AutoTagBannerGroup count={10} />
             <AdCluster count={3} />
-            <CoinzUpBanner />
           </div>
 
           <div style={{ backgroundColor: "var(--bg)" }}>
@@ -698,7 +697,6 @@ export default function Home() {
 
         {/* Skyscraper & Partner Ads Row */}
         <div className="mx-auto max-w-4xl px-4 pb-12">
-          <CoinzUpBanner />
           <AdCluster count={4} />
           <NativeAdBanner className="my-6" />
         </div>
